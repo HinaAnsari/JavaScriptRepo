@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment1</title>
+
+    <style>
+        #hoverText {
+            padding: 10px;
+            
+            transition: background-color 0.3s ease; /*transition effect for smoothly background change*/
+        }
+    </style>
+
+        <!--External javascript-->
+    <script src="./script.js"></script>   
+
+         <!--Internal javascript-->
+    <script>
+        function changeText(inputText) {
+           
+            if(inputText != ""){
+                 document.getElementById('displayText').innerText = inputText;      //displays change text in Html element
+             }else{
+                alert("Please enter the text");             //alert on empty value
+             }
+        }
+    //Function even Odd
+        function evenOdd(num){
+            if(num != ""){                            //empty field, validation
+                if(num%2===0){                                      //even number logic
+                document.getElementById('para').innerText = num + " is Even number";   // shows result in html element        
+                console.log( num + " is Even number");                                  //log the result in console
+                }
+                else{
+                document.getElementById('para').innerText = num + " is Odd number";           // this is for odd number
+                console.log( num + " is Odd number");
+                }
+            }
+            else{
+                alert("Please enter the Number");           //alert on empty value
+            }
+        }
+    //function getGreetingMessage
+        function getGreetingMessage(name) {             
+            if(name != "")                           
+            {
+                const now = new Date();                 //getting todays date from Date object
+                const hour = now.getHours();            //getting current time
+                console.log(name); 
+                if (hour >= 5 && hour < 12) {           //Greeting  logic according to time
+                    alert("Good Morning! " + name);
+                    document.getElementById("greeting").innerHTML ="Good Morning! " + name;          
+                    
+                } else if (hour >= 12 && hour < 17) {    
+                    alert("Good Afternoon! " + name);
+                    document.getElementById("greeting").innerHTML ="Good Afternoon! " + name;
+                }else if (hour >= 17 && hour < 20) {     
+                    alert("Good Evening! " + name);
+                    document.getElementById("greeting").innerHTML ="Good Evening! " + name;
+                }else if (hour >= 20) {                   
+                    alert("Good Night! " + name);
+                    document.getElementById("greeting").innerHTML ="Good Night! " + name;
+                }
+            }
+            else{
+                alert("Please enter the Name");     //alert on empty value
+            }
+    }
+
+
+
+    </script>
+</head>
+<body>
+    <section >
+
+        <h1>JavaScript Event Handling</h1>
+    
+        <!-- Text input field and button -->
+        <input type="text" id="inputText" placeholder="Enter some text">
+        <button onclick="changeText(inputText.value)">Change Text</button>
+        
+        <!-- Element whose text will change -->
+        <p id="displayText">This text will change based on input.</p>
+        
+        <!-- Element to trigger background color change on hover -->
+        <div id="hoverText" >
+            Hover over me to change the background color
+        </div>
+        
+            <h1 > Greeting User</h1>
+
+            <div>
+                <!--lable , text Inpute field , Button  -->
+                <lable>Enter your Name:</lable>
+                <input type="text" id="nameId" name="name" required placeholder="Enter your name">            
+                <button type="submit" name="submit" onclick="getGreetingMessage(nameId.value)">Greeting</button>
+                <!--Element to show Greeting message-->
+                <p id="greeting"></p>
+            </div>
+
+            <h1> Even and Odd Number </h1>
+
+            <div>
+                <!--lable , Inpute field for number and button-->
+                <lable>Enter Number:</lable>
+                <input type="number" id="num" name="num" required  placeholder="Enter number">
+                <button type="submit" name="submit" onclick="evenOdd(num.value)">Submit</button>       
+                <!--Element to show result-->
+                <p id="para"></p>
+            </div>                
+    
+    </section>
+</body>
+</html>
